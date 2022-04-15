@@ -1,4 +1,4 @@
-import {Encoder, Decoder} from "https://deno.land/x/cbor@v0.9.4/index.js";
+import {Encoder, Decoder} from "./deps.ts";
 
 const encoder = new Encoder({
     useRecords: false,
