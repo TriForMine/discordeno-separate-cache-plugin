@@ -25,6 +25,17 @@ export async function channel_set(channelId: bigint, channel: Channel) {
     }
 }
 
+export async function channel_size() {
+    try {
+        const res = await fetch(`https://localhost:9493/channels/size`)
+
+        const data = await res.arrayBuffer();
+        return decode(new Uint8Array(data)) as number
+    } catch (_) {
+        return 0
+    }
+}
+
 export async function channel_get(channelId: bigint) {
     try {
         const res = await fetch(`https://localhost:9493/channels/get/${channelId}`)

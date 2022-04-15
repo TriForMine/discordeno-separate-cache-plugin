@@ -32,6 +32,17 @@ export async function guild_set(guildId: bigint, guild: Guild) {
     }
 }
 
+export async function guild_size() {
+    try {
+        const res = await fetch(`https://localhost:9493/guilds/size`)
+
+        const data = await res.arrayBuffer();
+        return decode(new Uint8Array(data)) as number
+    } catch (_) {
+        return 0
+    }
+}
+
 export async function guild_get(guildId: bigint) {
     try {
         const res = await fetch(`https://localhost:9493/guilds/get/${guildId}`)

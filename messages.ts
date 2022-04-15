@@ -32,6 +32,16 @@ export async function message_set(messageId: bigint, message: Message) {
     }
 }
 
+export async function message_size() {
+    try {
+        const res = await fetch(`https://localhost:9493/messages/size`)
+
+        const data = await res.arrayBuffer();
+        return decode(new Uint8Array(data)) as number
+    } catch (_) {
+        return 0
+    }
+}
 
 export async function message_get(messageId: bigint) {
     try {
